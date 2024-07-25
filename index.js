@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const CHROME_PATH =
-	"/opt/render/.cache/puppeteer/chrome/linux-126.0.6478.182/chrome-linux64/chrome";
+	"/opt/render/.cache/puppeteer";
 
 const launchBrowser = async () => {
 	return await puppeteer.launch({
