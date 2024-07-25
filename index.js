@@ -4,15 +4,20 @@ const puppeteer = require("puppeteer");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const CHROME_PATH =
-	"/opt/render/.cache/puppeteer";
+	
 
 const launchBrowser = async () => {
 	return await puppeteer.launch({
+		args: [
+			"--disable-setuid-sandbox",
+			"--no-sandbox",
+			"--single-process",
+			"--no-zygote",
+		],
 		headless: false,
 		defaultViewport: null,
 		userDataDir: "./tmp",
-		executablePath: CHROME_PATH,
+		executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
 	});
 };
 
